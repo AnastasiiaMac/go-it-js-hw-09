@@ -16,10 +16,16 @@ form.addEventListener("input", () => {
 })
 form.addEventListener("submit", evt => {
     evt.preventDefault()
-    if (formData.email === "" || formData.message === "") {
-        return alert("All form fields must be filled in")
+    const submitFormData = {
+        email: evt.target.elements.email.value.trim(),
+        message: evt.target.elements.message.value.trim()
+    };
+    
+    if (submitFormData.email === "" || submitFormData.message === "") {
+        return alert("All form fields must be filled in");
     }
-    console.log(formData)
+    
+    console.log(submitFormData)
     localStorage.removeItem("feedback-form-state")
     form.reset()
 })
